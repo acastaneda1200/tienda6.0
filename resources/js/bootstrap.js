@@ -12,8 +12,13 @@ try {
     
 
     require('bootstrap');
+    require('@fortawesome/fontawesome-free/js/all.js');
+    require('jquery-confirm/js/jquery-confirm.js');
+    
     //require('bootstrap-material-design');
 } catch (e) {}
+
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

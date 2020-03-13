@@ -23,6 +23,8 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "bootstrap-material-design": "^4.1.2"
+        "@fortawesome/fontawesome-free": "^5.12.1",
+        "bootstrap-material-design": "^4.1.2",
+        "jquery-confirm": "^3.3.4"
     }
 }

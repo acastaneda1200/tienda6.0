@@ -38,7 +38,7 @@
               {!! method_field('DELETE') !!}    
               {!! csrf_field() !!}
               <button title="Eliminar"  class="btn btn-danger btnEliminar">
-                <i class="fa fa-remove"></i></button>
+                <i class="fas fa-trash-alt"></i>
             </form>
                 
             </td>

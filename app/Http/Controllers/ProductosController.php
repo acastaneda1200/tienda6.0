@@ -36,8 +36,10 @@ class ProductosController extends Controller
             array("ID" => "1", "DESCRIPCION" => "Activo"),
             array("ID" => "0", "DESCRIPCION" => "Inactivo")
         );
+
+        $categorias = DB::select("select idCategoria ,CONCAT(nombre, '-', descripcion) as cat_des from categorias");
         
-        return view ("productos.index", compact("productos", "estado"));
+        return view ("productos.index", compact("productos", "estado", "categorias"));
     }
 
     /**
