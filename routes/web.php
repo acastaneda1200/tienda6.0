@@ -13,6 +13,8 @@ Route::delete('/getProducto/{id}/delete', 'ProductosController@destroy')->name('
 
 Route::post('/updateEstado', 'ProductosController@updateEstado')->name('updateEstado');
 
+Route::post('/addCategorias', 'CategoriasController@addCategorias')->name('addCategorias');
+
 
 
 Route::get('/', function () {

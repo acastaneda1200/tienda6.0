@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class CategoriasController extends Controller
 {
@@ -107,5 +109,23 @@ class CategoriasController extends Controller
     {
         DB::table('categorias')->where('idCategoria', $id)->delete();
         return redirect()->route("categoriasindex");
+    }
+
+    public function addCategorias(Request $request){
+
+      
+       $validator = Validator::make($request->all(), [
+        'nombre' => 'required',
+        'descripcion' => 'required'
+    ]);
+    return response()->json(['error'=>$validator->errors()->all()]);
+
+        DB::table('categorias')->insert([
+            "nombre" => $_POST['nombre'],
+            "descripcion" => $_POST['descripcion']
+           
+        ]);
+
+        return redirect()->route("productosindex");
     }
 }
