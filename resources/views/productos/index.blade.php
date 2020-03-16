@@ -29,7 +29,7 @@
                                                                         class=error>:message</span>')!!}
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                                <label for="exampleInputPassword1">Cantidad</label>
+                                                                <label for="Cantidad">Cantidad</label>
                                                                 <input type="number" name="cantidad"
                                                                         value="{{old('cantidad')}}" class="form-control"
                                                                         id="exampleInputPassword1">
@@ -109,8 +109,8 @@
 							data: {
 								"_token": "{{ csrf_token() }}",
 								estado: estado,
-								idProducto,
 								idProducto
+								
 							}
 						}).done(function (data) {
 
@@ -143,6 +143,21 @@
                         //('#modalCategorias').modal("hide")
 
 			//$("#cboCategorias").append('<option value=""></option>')
+                       // console.log(data)
+                       
+                        if (data.success == false){
+                                var errorNombre = data.errors.nombreCat[0]
+                        var errorDescripcion = data.errors.descripcionCat[0]
+                                $('.txtNombreCat').append('<span class="error">'+errorNombre+ '</span>')
+                                $('.txtdescripcionCat').append('<span class="error">'+errorDescripcion+ '</span>')
+                        }else{
+                                var nombreVal = $('#txtNombreCat').val()
+                                var descripcionVal = $('#txtdescripcionCat').val()
+                                var idCategoria = $('#idCategoria').val()
+                                $('#modalCategorias').modal("hide")
+                                $("#cboCategorias").append(`<option value="${idCategoria}">${nombreVal + '-' + descripcionVal}</option>`)
+                        }
+                        
 
 		})
 	});

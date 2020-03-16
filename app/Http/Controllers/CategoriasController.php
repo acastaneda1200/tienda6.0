@@ -115,17 +115,28 @@ class CategoriasController extends Controller
 
       
        $validator = Validator::make($request->all(), [
-        'nombre' => 'required',
-        'descripcion' => 'required'
+        'nombreCat' => 'required',
+        'descripcionCat' => 'required'
     ]);
-    return response()->json(['error'=>$validator->errors()->all()]);
 
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'errors' => $validator->getMessageBag()->toArray()]);
+    } else {
         DB::table('categorias')->insert([
-            "nombre" => $_POST['nombre'],
-            "descripcion" => $_POST['descripcion']
+            "nombre" => $_POST['nombreCat'],
+            "descripcion" => $_POST['descripcionCat']
            
         ]);
 
-        return redirect()->route("productosindex");
+        
+    }
+
+    
+        //Tambien envia un json con las funciones de laravel
+        //return response()->json(['error'=>$validator->errors()->all()]);
+
+      
     }
 }

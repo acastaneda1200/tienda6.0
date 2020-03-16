@@ -37,9 +37,16 @@ class ProductosController extends Controller
             array("ID" => "0", "DESCRIPCION" => "Inactivo")
         );
 
+        $idCategoria = DB::select('SELECT AUTO_INCREMENT
+        FROM information_schema.TABLES
+        WHERE TABLE_SCHEMA = "tienda6.0"
+        AND TABLE_NAME = "categorias"');
+
+        
+
         $categorias = DB::select("select idCategoria ,CONCAT(nombre, '-', descripcion) as cat_des from categorias");
         
-        return view ("productos.index", compact("productos", "estado", "categorias"));
+        return view ("productos.index", compact("productos", "estado", "categorias", "idCategoria"));
     }
 
     /**
@@ -53,9 +60,12 @@ class ProductosController extends Controller
         $this->validate($request, [
             'nombre' => 'required|max:100',
             'descripcion' => 'required|max:100',
-            'cantidad' => 'integer|min:0|max:10',
+            'cantidad' => 'integer|min:0|max:99',
 
         ]);
+
+        
+
 
         DB::table('productos')->insert([
             "nombre" => $request->input("nombre"),
@@ -66,6 +76,10 @@ class ProductosController extends Controller
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);
+        return Response::json(array('success' => true, 'last_insert_id' => $data->id), 200);
+
+           
+      
 
         return redirect()->route("productosindex");
     }

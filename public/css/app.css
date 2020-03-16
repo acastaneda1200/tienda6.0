@@ -1068,6 +1068,10 @@ body[class*=jconfirm-no-scroll-] {
 }
 @charset "UTF-8";
 
+.error {
+  color: #e3342f;
+}
+
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors

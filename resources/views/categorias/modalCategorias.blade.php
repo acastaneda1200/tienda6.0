@@ -12,19 +12,23 @@
         <form id="frmCategorias" method="POST" action="">
            {!! csrf_field() !!}
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 txtNombreCat">
               <label for="Nombre">Nombre</label>
-              <input type="text" name="nombre" value="{{old('nombre')}}" class="form-control"
-                id="txtNombre">
-              {!!$errors->first('nombre', '<span class=error>:message</span>')!!}
+              <input type="text" name="nombreCat" value="{{old('nombreCat')}}" class="form-control"
+                id="txtNombreCat">
+              {!!$errors->first('nombreCat', '<span class=error>:message</span>')!!}
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 txtdescripcionCat">
               <label for="Descripcion">Descripcion</label>
-              <input type="text" name="descripcion" value="{{old('descripcion')}}" class="form-control"
-                id="txtdescripcion">
-              {!!$errors->first('descripcion', '<span class=error>:message</span>')!!}
+              <input type="text" name="descripcionCat" value="{{old('descripcionCat')}}" class="form-control"
+                id="txtdescripcionCat">
+              {!!$errors->first('descripcionCat', '<span class=error>:message</span>')!!}
             </div>
+            @foreach ($idCategoria as $idCat)
+          <input type="hidden" id="idCategoria" value="{{$idCat->AUTO_INCREMENT}}">
+            @endforeach
+
           </div>
         </form>
       </div>
