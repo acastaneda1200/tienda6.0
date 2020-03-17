@@ -7,10 +7,12 @@
     {!! method_field('PUT') !!}    
     {!! csrf_field() !!}
 
-    <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">Editar Producto</div>
-            <div class="panel-body">
+    <div class="col-md-12">
+        <div class="card bg-light mb-3">
+
+                <div class="card-header">Mantener Productos</div>
+                <div class="card-body">
+                        <div class="form-row">
                     <div class="form-group col-md-3">
                             <label for="exampleInputPassword1">Nombre</label>
                     <input type="text" name="nombre" value="{{$producto->nombre}}" class="form-control" id="">
@@ -54,6 +56,7 @@
             </div>
         </div>
     </div>
+</div>
 </form>
 </div>
 </div>

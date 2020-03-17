@@ -45,7 +45,7 @@
                                                                                         class="fas fa-plus-circle"></i>
                                                                                 Agregar Categorias</a></label>
 
-                                                                <select class="form-control" name="estado"
+                                                                <select class="form-control" name="categoria"
                                                                         id="cboCategorias">
                                                                         <option value="">Seleccione</option>
                                                                         @foreach ($categorias as $categoria)

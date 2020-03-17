@@ -67,7 +67,7 @@ class ProductosController extends Controller
         
 
 
-        DB::table('productos')->insert([
+        $idProducto = DB::table('productos')->insertGetId([
             "nombre" => $request->input("nombre"),
             "descripcion" => $request->input("descripcion"),
             "cantidad" => $request->input("cantidad"),
@@ -76,10 +76,13 @@ class ProductosController extends Controller
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now()
         ]);
-        return Response::json(array('success' => true, 'last_insert_id' => $data->id), 200);
 
-           
-      
+        
+         DB::table('categoria_producto')->insert([
+            "id_categoria" => $request->input("categoria"),
+            "id_producto" => $idProducto 
+
+         ]);
 
         return redirect()->route("productosindex");
     }

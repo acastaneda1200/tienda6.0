@@ -49,7 +49,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/productos/nuevo') }}">
+                            <a class="nav-link" href="{{ url('/categorias/nuevo') }}">
                                 Mantener Categorias
                             </a>
 
